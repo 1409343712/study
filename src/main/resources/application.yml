@@ -1,0 +1,17 @@
+server:
+  port: 80
+  servlet:
+    context-path: /study
+#swagger ����
+swagger:
+  title: STUDY-API
+  desc: 个人学习练习
+  version: 0.0.1.SNAPSHOT
+  termsOfServiceUrl: javascript:void(0)
+  license: Apache 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+  basePackage: com.scream.study
+  groupName: STUDY-API
+  contactName: ByeBeeBee
+  contactUrl: https://github.com/1409343712/study.git
+  contactEmail: 1409343712@qq.com
