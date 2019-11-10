@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Api(tags = "测试接口")
+@Api(tags = "Swaggerp配置演示")
 @RestController
 public class SwaggerController {
 
@@ -29,10 +29,10 @@ public class SwaggerController {
     }
     @ApiOperation(value = "测试 - Post请求参数")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "request", value = "request", required = true)
+            @ApiImplicitParam(name = "queryBody", value = "queryBody", required = true)
     })
     @PostMapping(value = "/testPost")
-    public ResponseEntity<String> testPost(@RequestBody QueryBody request) {
-        return ResponseEntity.ok("编号: " + request.getId()+ "名称: " + request.getName());
+    public ResponseEntity<String> testPost(@RequestBody QueryBody queryBody) {
+        return ResponseEntity.ok("编号: " + queryBody.getId()+ "名称: " + queryBody.getName());
     }
 }

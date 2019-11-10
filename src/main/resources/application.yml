@@ -15,3 +15,10 @@ swagger:
   contactName: ByeBeeBee
   contactUrl: https://github.com/1409343712/study.git
   contactEmail: 1409343712@qq.com
+spring:
+  data:
+    elasticsearch:
+      #集群名称
+      cluster-name: es-scream
+      #地址
+      cluster-nodes: 192.168.222.128:9300

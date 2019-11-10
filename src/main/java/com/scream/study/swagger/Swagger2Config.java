@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMethod;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -50,8 +49,8 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(groupName)
                 .directModelSubstitute(LocalDate.class, String.class).genericModelSubstitutes(ResponseEntity.class)
                 .useDefaultResponseMessages(false)
-                .globalResponseMessage(RequestMethod.POST, customerResponseMessage())
-                .globalResponseMessage(RequestMethod.GET, customerResponseMessage())
+//                .globalResponseMessage(RequestMethod.POST, customerResponseMessage())
+//                .globalResponseMessage(RequestMethod.GET, customerResponseMessage())
                 .forCodeGeneration(true).select()
                 .apis(RequestHandlerSelectors.basePackage(basePackage))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)).paths(PathSelectors.any())

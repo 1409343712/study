@@ -1,4 +1,4 @@
-package com.scream.study.thread.countdownlathc;
+package com.scream.study.thread.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 

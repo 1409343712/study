@@ -1,4 +1,4 @@
-package com.scream.study.thread;
+package com.scream.study.thread.createthread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

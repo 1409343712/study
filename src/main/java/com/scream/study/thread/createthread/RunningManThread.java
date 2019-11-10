@@ -1,4 +1,4 @@
-package com.scream.study.thread;
+package com.scream.study.thread.createthread;
 
 public class RunningManThread extends Thread{
     private String name;
