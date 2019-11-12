@@ -1,4 +1,4 @@
-package com.scream.study.thread;
+package com.scream.study.thread.lock;
 
 /**
  * 本例主要演示线程如何死锁
