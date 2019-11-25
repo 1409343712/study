@@ -1,4 +1,4 @@
-package com.scream.study.thread;
+package com.scream.study.thread.lock;
 
 public class LockTest {
 	private static  int i = 0;
