@@ -104,7 +104,7 @@ public class StreamTest {
         List<Person> personList = getPersonList();
 //        personList.stream().filter(item -> item.getSex().equals("男")).forEach(item -> System.out.println(item.getSex()));//过滤
 
-//        personList.stream().map(item -> null).forEach(item -> System.out.println(item));//重新赋值
+        personList.stream().map(item -> item.getName() + item.getSex() + item.hashCode()).forEach(item -> System.out.println(item));//获取自己想要的数据
 //        personList.stream().map(item -> item.getName()).forEach(name -> System.out.println(name));//collectionUtils.collect();
 
 //        Optional<Person> optional = personList.stream().findFirst();//查找第一个元素
