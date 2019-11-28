@@ -1,4 +1,4 @@
-package com.scream.study.thread.ForkJoin.recursiveaction;
+package com.scream.study.thread.forkjoin.recursiveaction;
 
 import java.io.File;
 import java.util.ArrayList;

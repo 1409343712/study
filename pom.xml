@@ -83,6 +83,13 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <!-- es -->
+        <!--apache-->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+        <!--apache-->
     </dependencies>
 
     <build>
