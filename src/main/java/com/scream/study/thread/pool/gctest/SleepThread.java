@@ -1,4 +1,4 @@
-package com.scream.study.thread.pool;
+package com.scream.study.thread.pool.gctest;
 
 public class SleepThread extends Thread{
 //    @Override

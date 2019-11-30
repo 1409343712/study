@@ -1,4 +1,4 @@
-package com.scream.study.thread.pool;
+package com.scream.study.thread.pool.gctest;
 
 
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public final class ThreadProvider {
         }
         System.out.println("availProcessors:" + availProcessors + "\r\n" + "maxProcessors" + maxProcessors) ;
         ecxecutorService =  new ThreadPoolExecutor(availProcessors, maxProcessors, 1L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(10), new RejectedExecutionHandler() {
+                new LinkedBlockingQueue<Runnable>(1000), new RejectedExecutionHandler() {
 
             @Override
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
