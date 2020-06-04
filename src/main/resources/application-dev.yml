@@ -1,0 +1,98 @@
+spring:
+  jackson:
+    # 时区设置
+    time-zone: Asia/Chongqing
+    # 时间格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    druid:
+        url: jdbc:mysql://localhost:3306/scream?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        # password: mfBiZQAnusNkJv+lyW42q7+C/TWt9hZRJyo1je1UbJFCr+BN7QkKvBg2Mk4KvFg5wp0GqEuH0GQB0RAeeZdLLA==
+        password: scream1213
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 初始化物理连接个数
+        initial-size: 10
+        # 最大连接池数量
+        max-active: 20
+        # 最小连接池数量
+        min-idle: 5
+        # 获取连接时最大等待时间(ms)
+        max-wait: 60000
+        # 开启缓存preparedStatement(PSCache)
+        pool-prepared-statements: false
+        # 启用PSCache后，指定每个连接上PSCache的大小
+        max-pool-prepared-statement-per-connection-size: 20
+        #打开KeepAlive之后的效果
+        #1>初始化连接池时会填充到minIdle数量。
+        #2>连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作。
+        #3>当网络断开等原因产生的由ExceptionSorter检测出来的死连接被清除后，自动补充连接到minIdle数量。
+        # 开启keepAlive操作
+        keep-alive: true
+        # 2次keepAlive操作的时间间隔
+        keep-alive-between-time-millis: 50000
+        # 用来检测连接是否有效的sql
+        validation-query: select 'x'
+        # 申请连接时不检测连接是否有效
+        test-on-borrow: false
+        # 归还连接时不检测连接是否有效
+        test-on-return: false
+        # 申请连接时检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效（不影响性能）
+        test-while-idle: true
+        # 检测连接的间隔时间，若连接空闲时间 >= minEvictableIdleTimeMillis，则关闭物理连接
+        time-between-eviction-runs-millis: 60000
+        # 连接保持空闲而不被驱逐的最小时间(ms)
+        min-evictable-idle-time-millis: 300000
+        # 配置监控统计拦截的filters（不配置则监控界面sql无法统计），监控统计filter:stat，日志filter:log4j，防御sql注入filter:wall
+        filters: stat,slf4j,wall
+        # 支持合并多个DruidDataSource的监控数据
+        use-global-data-source-stat: true
+        # 通过connectProperties属性来打开mergeSql(Sql合并)功能；慢SQL记录(配置超过5秒就是慢，默认是3秒)；解密使能
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=false;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJY5CPtstYdu0qOGtPjsmRqdPd6tFazGSioGRwl9V91R3RvdeLWbECKZuEifYAEAwnkYeWXMTiNr9opw/tAEDdECAwEAAQ==
+        # 监控配置
+        # Druid WebStatFilter配置
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          exclusions: /druid/*,*.gif,*.png,*.jpg,*.html,*.js,*.css,*.ico
+        # Druid StatViewServlet配置
+        stat-view-servlet:
+          enabled: true
+          url-pattern: /druid/*
+          # 登录监控界面的用户名以及密码，登录url为localhost:8080/druid
+          login-username: admin
+          login-password: scream1213
+          allow:
+          deny:
+        filter:
+          # 慢SQL记录(sql语句执行时间超过某个界限就记录下来)
+          stat:
+            slow-sql-millis: 200
+            log-slow-sql: true
+  data:
+    #elasticsearch
+    elasticsearch:
+      #集群名称
+      cluster-name: es-scream
+      #地址
+      cluster-nodes: 192.168.222.131:9300
+
+#   configuration:
+#      # 开启驼峰命名转换
+#      map-underscore-to-camel-case: true
+logging:
+  config: classpath:logback/logback-scream.xml
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定mybatis映射文件的位置
+  mapper-locations: classpath:/com/scream/study/mybatis/mapper/*.xml
+  type-aliases-package: com.scream.workhelper.mybatis.mapper
+#   time-zone: Asia/Chongqing
+system:
+  ftpinfo:
+    host: 127.0.0.1
+    port: 21
+    username: scream
+    password: scream1213
+    connectTimeout: 5000
+    ftpBasePath: /

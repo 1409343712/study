@@ -81,7 +81,7 @@ public class MapTest {
 	 */
 	@Test
 	public void computeIfAbsent() {
-		String after = helpMap.computeIfAbsent("6", (key) -> "supply()之后的值");
+		String after = helpMap.computeIfAbsent("6", key -> "supply()之后的值");
 		System.out.println(after);
 		System.out.println(helpMap);
 	}

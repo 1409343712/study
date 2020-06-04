@@ -3,10 +3,10 @@ package com.scream.study.java8.lambda;
 import org.junit.After;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class LambdaTest {
 	private List<Integer> numList = Arrays.asList(3,2,5,1,4);
@@ -69,4 +69,12 @@ public class LambdaTest {
 	public void show(){
 		System.out.println(numList);
 	}
+
+	public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor)
+	{
+		Map<Object, Boolean> map = new ConcurrentHashMap<>();
+		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+	}
+	//使用举例
+//    persons.stream().filter(distinctByKey(Person::getName))
 }

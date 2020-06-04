@@ -1,5 +1,8 @@
+spring:
+  profiles:
+      active: dev
 server:
-  port: 80
+  port: 8080
   servlet:
     context-path: /study
 #swagger ����
@@ -16,11 +19,3 @@ swagger:
   contactUrl: https://github.com/1409343712/study.git
   contactEmail: 1409343712@qq.com
 
-#elasticsearch
-spring:
-  data:
-    elasticsearch:
-      #集群名称
-      cluster-name: es-scream
-      #地址
-      cluster-nodes: 192.168.222.131:9300

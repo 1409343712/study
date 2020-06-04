@@ -1,0 +1,12 @@
+第二节 如何注册Bean
+FactoryBean接口
+ImportBeanDefinitionRegistrar 接口
+ImportSelector接口
+@Import
+@Conditional
+@Enablexxx
+
+
+
+@Service与@Component注解本质上没有区别，@Service其实也是引用了@Component 只是为了在业务功能上进行更明确的划分
+@Mapper注解并不属于Spring 而是属于mybatis 扫描@Mapper需要使用 @MapperScan而不是ComponentScan

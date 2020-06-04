@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+	<property name="LOG_HOME" value="/logs" />
+	<property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
+
+	<!--控制台日志， 控制台输出 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度,%msg：日志消息，%n是换行符-->
+			<pattern>${PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<!--文件日志， 按照每天生成日志文件 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名-->
+			<FileNamePattern>${LOG_HOME}/%d.log</FileNamePattern>
+			<!--日志文件保留天数-->
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+			<pattern>${PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<!--日志文件最大的大小-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<!--
+        在log4j jdbc中定义了以下五个日志对象：
+        　　jdbc.sqlonly: 记录系统执行过的sql语句
+        　　jdbc.sqltiming: 记录sql执行的时间，可以分析耗时的sql语句
+        　　jdbc.audit: 记录除了ResultSet外的所有JDBC调用情况。一般不需要。
+        　　jdbc.resultset: 记录返回结果集信息
+        　　jdbc.connection: 记录数据库连接和释放信息，可记录当前的数据库连接数，便于诊断连接是否释放。
+    -->
+	<logger name="org.hibernate" level="WARN" />
+	<logger name="org.aspectj" level="WARN" />
+	<logger name="org.springframework" level="WARN" />
+	<logger name="jdbc.sqltiming" level="DEBUG" />
+	<!--myibatis log configure-->
+	<logger name="com.apache.ibatis" level="TRACE"/>
+	<logger name="java.sql.Connection" level="DEBUG"/>
+	<logger name="java.sql.Statement" level="DEBUG"/>
+	<!-- java.sql.PreparedStatement这一句至关重要如果没有，就无法输出sql语句 -->
+	<logger name="java.sql.PreparedStatement" level="DEBUG"/>
+	<logger name="java.sql.ResultSet" level="DEBUG" />
+
+	<springProfile name="dev">
+		<!-- 日志输出级别 -->
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+			<appender-ref ref="CONSOLE"/>
+		</root>
+	</springProfile>
+
+	<springProfile name="test">
+		<!-- 日志输出级别 -->
+		<root level="DEBUG">
+			<appender-ref ref="FILE" />
+			<appender-ref ref="CONSOLE"/>
+		</root>
+	</springProfile>
+
+	<springProfile name="pro">
+		<!-- 日志输出级别 -->
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+			<appender-ref ref="CONSOLE"/>
+		</root>
+	</springProfile>
+</configuration>

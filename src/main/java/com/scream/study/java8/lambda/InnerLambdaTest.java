@@ -13,6 +13,16 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+
+/**
+ * create by: scream
+ * create time: 2020/2/9 15:43
+ * description: JAVA8 四大核心函数式接口
+ * Consumer<T>：消费型接口（void accept(T t)）
+ * Supplier<T>：供给型接口（T get（））
+ * Function<T, R>：函数型接口（R apply（T t））
+ * Predicate<T>：断言型接口（boolean test（T t））
+ */
 public class InnerLambdaTest {
 	private static final Consumer<Object> consumer = System.out::println;
 
@@ -60,6 +70,7 @@ public class InnerLambdaTest {
 		Supplier<Object> supplier = Object::new;
 		consumer.accept(supplier.get());
 	}
+
 	@Test
 	public void testSuppierJdk() {
 		Supplier<Object> supplier = Object::new;

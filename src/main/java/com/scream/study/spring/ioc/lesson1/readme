@@ -1,0 +1,6 @@
+@configuration & ComponentScan & @bean 
+@service
+@repository
+@lazy
+@Scope
+
